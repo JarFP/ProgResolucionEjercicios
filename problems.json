@@ -1,0 +1,514 @@
+{
+  "problems": [
+    {
+      "id": "ut2-e1-1",
+      "title": "UT2_E1_Tablero de tres en raya",
+      "text": "Dibuja un tablero de 3 en raya en el que se aprecien las fichas (X O) y los bordes de las casillas."
+    },
+    {
+      "id": "ut2-e1-2",
+      "title": "UT2_E1_Cara de colores",
+      "text": "Dibuja esta figura por pantalla:\n @@@@@@@@\n @ x  x @\n @  uu  @\n @@@@@@@@\nLos ojos deben ser verdes, la boca roja y las @ amarillas."
+    },
+    {
+      "id": "ut2-e1-3",
+      "title": "UT2_E1_Diferencia entre print y println",
+      "text": "Ejecuta las siguientes líneas de código en un nuevo programa:\nSystem.out.print(\"\\033[35m uno\");\nSystem.out.print(\"dos\");\nReemplaza \"print\" por \"println\" ¿Qué diferencias aprecias?"
+    },
+    {
+      "id": "ut2-e2-1",
+      "title": "UT2_E2_Rangos de los tipos primitivos",
+      "text": "Echa un vistazo a los tipos de datos primitivos:\nhttps://www.w3schools.com/java/java_data_types.asp\nObserva el rango numérico de cada tipo de dato."
+    },
+    {
+      "id": "ut2-e2-2",
+      "title": "UT2_E2_Asignar variables de distinto tipo",
+      "text": "Crea un programa con dos variables de distinto tipo, intenta asignar la primera variable a la segunda. Prueba con diferentes tipos y familiarízate con los errores que genera."
+    },
+    {
+      "id": "ut2-e2-3",
+      "title": "UT2_E2_Palabra con tres char",
+      "text": "Crea tres variables de tipo char y empléalas en una sola sentencia System.out.println para generar una palabra de tres letras como Sol."
+    },
+    {
+      "id": "ut2-e2-4",
+      "title": "UT2_E2_Dirección postal",
+      "text": "Imprime por pantalla una dirección postal tal y como aparecería en una carta. Todos los campos deben ser variables."
+    },
+    {
+      "id": "ut2-e3-1",
+      "title": "UT2_E3_Tabla de multiplicar con una variable",
+      "text": "Crea un programa en java que genera la tabla de multiplicar de un número que se declara en una variable al inicio del mismo. Solo puede usar una variable de tipo entero en todo el programa."
+    },
+    {
+      "id": "ut2-e3-2",
+      "title": "UT2_E3_Edad en años, meses y días",
+      "text": "Crea un programa que a partir de la fecha de nacimiento diga la edad en años, meses y días de la persona. Y los bisiestos? Es muy tedioso! Investiga \"java gregorian calendar\", e intenta resolver el ejercicio haciendo uso de ello."
+    },
+    {
+      "id": "ut2-e3-3",
+      "title": "UT2_E3_Mayor calificación de cuatro asignaturas",
+      "text": "Crea un programa que saque por pantalla las calificaciones obtenidas en 4 asignaturas, y debe indicar de alguna forma cual de ellas tiene la mayor calificación."
+    },
+    {
+      "id": "ut2-e3-4",
+      "title": "UT2_E3_Hipotenusa de un triángulo",
+      "text": "Crea un programa que calcule la hipotenusa de un triángulo rectángulo a partir del tamaño de sus catetos, los valores deben expresarse con decimales."
+    },
+    {
+      "id": "ut2-e4-1",
+      "title": "UT2_E4_Conversiones implícitas",
+      "text": "Intenta hacer más conversiones de datos implícitas. ¿Funcionan todas? ¿Alguna da error? Si no conoces bien todos los tipos de datos busca en internet sobre ellos así sabrás el formato que usan."
+    },
+    {
+      "id": "ut2-e4-2",
+      "title": "UT2_E4_Errores de conversión",
+      "text": "Realiza diferentes conversiones de datos. Algunas darán error, lo importante de este ejercicio es que te familiarices con esos errores y el texto que los describe."
+    },
+    {
+      "id": "ut2-e4-3",
+      "title": "UT2_E4_Texto a double y float",
+      "text": "Realiza conversiones de texto a variables de tipo double y float. (Busca en internet si no encuentras la forma de hacerlo!)"
+    },
+    {
+      "id": "ut2-e4-4",
+      "title": "UT2_E4_Integer frente a int",
+      "text": "Hemos usado esta sentencia para convertir texto a número:\nnumero = Integer.parseInt(cadena1);\nInvestiga qué es \"Integer\".\nHaz un programa que use variables de tipo \"Integer\" y de tipo \"int\". ¿En qué se diferencian?"
+    },
+    {
+      "id": "ut2-e5-1",
+      "title": "UT2_E5_Calculadora de dos números",
+      "text": "Realiza un programa que solicite dos números al usuario y devuelva la suma, la resta, la multiplicación y la división de esos números, el resultado debe mostrar las operaciones completas (Ejemplo: 7 * 2 = 14)"
+    },
+    {
+      "id": "ut2-e5-2",
+      "title": "UT2_E5_Hipotenusa con unidades",
+      "text": "Modifica el ejercicio 4 del ejemplo 3, en el que calculábamos la hipotenusa de un triángulo, ahora el programa debe solicitar el valor de los catetos al usuario, además debe solicitar las unidades en las que se expresan los valores (centímetros, metros, kilómetros, etc.), y el resultado debe indicar dicha unidad."
+    },
+    {
+      "id": "ut2-e5-3",
+      "title": "UT2_E5_Desglose del IVA",
+      "text": "Escribe un programa que a partir del precio de venta y el % de IVA calcule la parte que se queda el comercio y la parte que son impuestos."
+    },
+    {
+      "id": "ut2-e5-4",
+      "title": "UT2_E5_Mayor y menor de tres números",
+      "text": "Realiza un programa que a partir de tres números indique cual es el mayor, cual es el menor o si son iguales."
+    },
+    {
+      "id": "ut2-e5-5",
+      "title": "UT2_E5_Explorar la Javadoc",
+      "text": "Asegúrate que la javadoc de tu JDK esta bien configurada en NetBeans. (Consulta la sección de información de la unidad en el aula virtual). A partir de este código:\nString a;\nScanner b;\nInteger c;\n\nEscribe en una nueva línea \"a.\" y deja que aparezca la ayuda de javadoc. Explora las distintas opciones que aparecen e intenta deducir para qué se pueden emplear. Haz lo mismo con \"b.\" y \"c.\".\n\"Integer\" es un tipo similar a \"int\". Busca información sobre ello en internet e intenta entender qué papel juegan cada uno de estos tipos."
+    },
+    {
+      "id": "ut3-e1-1",
+      "title": "UT3_E1_Par o impar",
+      "text": "Escribe un programa que lea un número por el teclado y diga si el número es par o impar."
+    },
+    {
+      "id": "ut3-e1-2",
+      "title": "UT3_E1_Contraseña de acceso",
+      "text": "Escribe un programa que solicite una contraseña (con mayúsculas, minúsculas, signos de puntuación y números), si la contraseña es correcta tendrá acceso al sistema, si es incorrecta no."
+    },
+    {
+      "id": "ut3-e1-3",
+      "title": "UT3_E1_Precio del billete de autobús",
+      "text": "Escribe un programa que solicite la edad del comprador de un billete de autobús y le muestre el precio del billete. Si es menor de 7 años el precio será gratuito, menor de 26 será un euro, hasta 65 años 2 euros y mayor de 65 gratuito."
+    },
+    {
+      "id": "ut3-e1-5",
+      "title": "UT3_E1_Coste del parking",
+      "text": "Escribe un programa que calcule el coste de un parking. El programa pedirá las horas y minutos que ha estado estacionado el vehículo. El precio es:\n- 10 céntimos el minuto los primeros 60 minutos\n- 7 céntimos el minuto los siguientes 120 minutos\n- 5 céntimos los minutos restantes.\nSi el tiempo total es mayor a 3000 minutos, en lugar de sacar el precio sacará un mensaje diciendo \"El coche se encuentra en el depósito. Recibirá una multa en su domicilio.\"."
+    },
+    {
+      "id": "ut3-e2-1",
+      "title": "UT3_E2_Billete de autobús con switch",
+      "text": "Reescribe el ejercicio del precio del billete del autobús de (UT03E01if) empleando la instrucción switch."
+    },
+    {
+      "id": "ut3-e2-2",
+      "title": "UT3_E2_Menú de opciones",
+      "text": "Escribe un programa que genere un menú de opciones para el usuario. El usuario debe pulsar una de las opciones y el programa responder con la opción pulsada."
+    },
+    {
+      "id": "ut3-e2-3",
+      "title": "UT3_E2_Reserva de pista de tenis",
+      "text": "Escribe un programa que pregunte por el día de la semana que quiere reservar pista de tenis. Tras seleccionar el día debe decir que pista quiere reservar, y si quiere contratar luz artificial. Las pistas disponibles por días son:\nLunes (1, 2 y 3), Martes (4, 5 y 6) y Miércoles (1, 4 y 7). La luz se puede contratar todos los días. El programa debe mostrar la secuencia de operaciones del usuario y guiarle, por ejemplo si decide reservar martes, el programa debe decir qué pistas están libres ese día para que él pueda decidir. Al final debe mostrarse el resultado de la reserva.\nEjemplo: Ha reservado La pista 4 el miércoles sin luz artificial."
+    },
+    {
+      "id": "ut3-e2-4",
+      "title": "UT3_E2_Ordenar tres números",
+      "text": "Escribe un programa que a partir de tres números introducidos por el teclado, los muestre ordenados de mayor a menor."
+    },
+    {
+      "id": "ut3-e2-5",
+      "title": "UT3_E2_Saludo en color",
+      "text": "Escribe un programa que salude al usuario, pero el usuario debe poder seleccionar en qué color quiere ser saludado."
+    },
+    {
+      "id": "ut3-e3-1",
+      "title": "UT3_E3_Tabla de multiplicar con for",
+      "text": "Escribe de nuevo el ejercicio de calcular una tabla de multiplicar empleando un bucle for."
+    },
+    {
+      "id": "ut3-e3-2",
+      "title": "UT3_E3_Múltiplos de 7",
+      "text": "Escribe un programa que recorra con un bucle los números del 1 al 100 y saque por pantalla los que sean múltiplo de 7 de la siguiente forma:\nLos números múltiplos de 7 son: 7, 14, 21..."
+    },
+    {
+      "id": "ut3-e3-3",
+      "title": "UT3_E3_Suma de los caracteres de una frase",
+      "text": "¿Recuerdas qué pasaba si escribías un char en un System.out.print? ¡Bien! Me alegro de que lo recuerdes. Crea un programa en el que declares esta línea:\nString frase = \"Zubat es mejor que Charmander.\";\nluego escribe frase.charAt... y familiarízate con ese método qué hace?, qué parámetros recibe?, qué parámetros devuelve? ¡Bien! ¡Bien!, vas bien. En el programa debes calcular la suma de todos los caracteres de la frase."
+    },
+    {
+      "id": "ut3-e3-4",
+      "title": "UT3_E3_Login con intentos",
+      "text": "Realiza un programa que permita hacer log in. Para ello el usuario debe introducir una contraseña. Si la acierta, entrará, si la falla debe generar un mensaje diciendo que le quedan X intentos, si la falla en todos los intentos debe decir que la cuenta ha quedado bloqueada."
+    },
+    {
+      "id": "ut3-e3-5",
+      "title": "UT3_E3_Dibujar un cuadrado",
+      "text": "Escribe un programa que saque por pantalla un cuadrado, el tamaño del cuadrado y el caracter empleado para dibujarlo debe ser introducido por el usuario. Ejemplo de ejecución:\nTamaño del cuadrado: 4\nCaracter empleado: @\nAquí tiene su cuadrado:\n@@@@\n@  @\n@  @\n@@@@\nSi quieres amplíalo pidiendo un color y un caracter para el relleno. Si quieres seguir ampliándolo que además de un cuadrado, pueda ser un triángulo, o un círculo."
+    },
+    {
+      "id": "ut3-e4-1",
+      "title": "UT3_E4_Menú con reintento",
+      "text": "Rediseña el programa de escribir un menú y que el usuario seleccione una opción, para que si el usuario introduce un valor que no existe en el menú lo pueda intentar de nuevo."
+    },
+    {
+      "id": "ut3-e4-2",
+      "title": "UT3_E4_Tablero de ajedrez",
+      "text": "Escribe un programa que imprima por pantalla un tablero de ajedrez con los caracteres X y 0, el usuario debe introducir por el teclado el tamaño del tablero. Ejemplo para tamaño 5:\nx0x0x\n0x0x0\nx0x0x\n0x0x0\nx0x0x"
+    },
+    {
+      "id": "ut3-e4-3",
+      "title": "UT3_E4_Tabla de números con bucles anidados",
+      "text": "Si uso un bucle puedo crear una secuencia de números:\n1 2 3 4 5\nSi uso un bucle dentro de otro puedo crear una tabla:\n11 12 13 14 15\n21 22 23 24 25\n31 32 33 34 35\n41 42 43 44 45\n51 52 53 54 55\nRealiza el programa que genere esta tabla."
+    },
+    {
+      "id": "ut3-e4-4",
+      "title": "UT3_E4_Cubo de números",
+      "text": "¿Tienes el programa del ejercicio anterior? Era sencillo, ¿eh? ¿Qué pasa si tengo un bucle dentro de un bucle dentro de un bucle? Tendríamos un cubo en lugar de un cuadrado. Modifica el programa del ejercicio anterior para que genere un cubo de números. ¿Cómo te las apañarás para sacarlo por pantalla?"
+    },
+    {
+      "id": "ut3-e4-5",
+      "title": "UT3_E4_Estadísticas hasta un negativo",
+      "text": "Realiza un programa que vaya pidiendo números hasta que se introduzca un número negativo y nos diga cuántos números se han introducido, la media de los impares y el mayor de los pares. El número negativo sólo se utiliza para indicar el final de la introducción de datos pero no se incluye en el cómputo."
+    },
+    {
+      "id": "ut3-e5-1",
+      "title": "UT3_E5_Contar dígitos hasta cinco",
+      "text": "Crear un algoritmo que cuente y muestre por pantalla el nº de dígitos de un nº introducido por pantalla, pero solamente hasta llegar a 5 dígitos, en caso de que tenga más dejaremos de contarlos"
+    },
+    {
+      "id": "ut3-e5-2",
+      "title": "UT3_E5_Parquímetro minuto a minuto",
+      "text": "Rediseña el ejercicio del coste del parquímetro pero recorriendo todos los minutos que ha estado y sumando el precio de cada minuto. Emplea un tipo de bucle diferente para cada franja de precios y usa las instrucciones break y continue para saltar bucles o iteraciones."
+    },
+    {
+      "id": "ut3-e6-1",
+      "title": "UT3_E6_Par o impar con ternario",
+      "text": "Escribe un programa que lea un número por el teclado y diga si el número es par o impar. Emplea operador ternario."
+    },
+    {
+      "id": "ut3-e6-2",
+      "title": "UT3_E6_Aprobados en singular o plural",
+      "text": "Escribe un programa que a partir de una variable con el número de alumnos diga cuántos han aprobado. Para cualquier valor entero y positivo la sentencia debe hacer un uso correcto del plural/singular. Emplear operador ternario para construir dinámicamente la oración sin necesidad de almacenar en una variable. Ejemplos de resultados:\nHan aprobado 3 alumnos.\nHa aprobado 1 alumno."
+    },
+    {
+      "id": "ut3-e6-3",
+      "title": "UT3_E6_Cuenta atrás de un cohete",
+      "text": "Escribe un programa que simule la cuenta atrás del lanzamiento de un cohete. Las indicaciones por pantalla deben ser segundos reales."
+    },
+    {
+      "id": "ut3-e6-4",
+      "title": "UT3_E6_Barra de carga",
+      "text": "Escribe un programa que simule una barra de carga del 0 al 100% dibujada progresivamente con saltos temporales."
+    },
+    {
+      "id": "ut3-e7-1",
+      "title": "UT3_E7_Longitud de la contraseña",
+      "text": "Realiza un programa que pida por pantalla una contraseña y diga al usuario si la contraseña introducida está en un rango correcto de caracteres (de 5 a 8)."
+    },
+    {
+      "id": "ut3-e7-2",
+      "title": "UT3_E7_Ordenar tres nombres",
+      "text": "Realiza un programa que ordene alfabéticamente el nombre de tres alumnos, que están en tres variables String."
+    },
+    {
+      "id": "ut3-e7-3",
+      "title": "UT3_E7_Almohadilla en un campo de puntos",
+      "text": "Crea un programa que permita ver pasar un # por un campo de puntos. El # debe avanzar un paso cada 100 milisegundos. Ejemplo de algunos pasos de la ejecución:\n“.................................”\n“#................................”\n“.........#.......................”\n“.....................#...........”\n“................................#”\n“.................................”"
+    },
+    {
+      "id": "ut3-e7-4",
+      "title": "UT3_E7_Formatear datos personales",
+      "text": "Crea un programa que inserte el nombre, primer apellido, segundo apellido y edad de una persona, usando el formateo de cadena. El nombre y los apellidos deben estar en variables String separadas y la edad en una variable int. Ejemplo de ejecución:\n“Pepito Rodríguez García tiene 25 años.”"
+    },
+    {
+      "id": "ut3-e7-5",
+      "title": "UT3_E7_Limpiar espacios sobrantes",
+      "text": "Crea un programa que limpie los espacios en blanco sobrantes de una frase. Este debe eliminar los espacios en blanco al principio, los espacios en blanco al final y todos los espacios en blanco juntos. Ejemplo:\nCadena inicial:   “   Esta    es  mi frase     favorita     .   “\nCadena resultado: “Esta es mi frase favorita.”"
+    },
+    {
+      "id": "ut3-e7-6",
+      "title": "UT3_E7_Explorar métodos de String",
+      "text": "Explora los métodos de String y utiliza alguno que no hayamos explicado en clase."
+    },
+    {
+      "id": "ut3-e7-7",
+      "title": "UT3_E7_Métodos de Character e Integer",
+      "text": "Existen otras clases que son similares a String, entre ellas clases “espejo” de los tipos de datos nativos del lenguaje que ya conoces. Explora los métodos de las clases Character e Integer. Dedica el tiempo que consideres necesario a estos dos últimos ejercicios, son esenciales para entender cómo funcionan las clases y cómo emplear esa funcionalidad."
+    },
+    {
+      "id": "ut3-e8-1",
+      "title": "UT3_E8_Nota del boletín",
+      "text": "Crea un programa que calcule la nota entera (sin decimales) que irá al boletín de calificaciones, la nota será calculada en base a las prácticas y el examen como un float de 0 a 10, con decimales. La nota final del boletín irá de 1 a 10 y se calculará con redondeo natural, salvo en la franja de 4.0 a 4.99 que será por truncamiento."
+    },
+    {
+      "id": "ut3-e8-2",
+      "title": "UT3_E8_Perímetro y área de un círculo",
+      "text": "Crea un programa que calcule el perímetro y el área de un círculo a partir del radio del mismo."
+    },
+    {
+      "id": "ut3-e8-3",
+      "title": "UT3_E8_Distancia en la cueva",
+      "text": "Crea un programa que resuelva el siguiente problema. Zubat, Golbat y Crobat están en una cueva, formando un triángulo. Entre Zubat y Golbat hay 25 metros, entre Golbat y Crobat hay 12 metros, el ángulo formado en la esquina de Crobat es de 20º. ¿Cuál es la distancia entre Zubat y Crobat?"
+    },
+    {
+      "id": "ut3-e8-4",
+      "title": "UT3_E8_Tirada de tres dados",
+      "text": "Crea un programa que genere tiradas de un dado de seis caras. El usuario puede lanzar tres dados al mismo tiempo."
+    },
+    {
+      "id": "ut3-e8-5",
+      "title": "UT3_E8_Piedra, papel o tijera",
+      "text": "Crea un programa que juegue con el usuario a piedra papel tijera."
+    },
+    {
+      "id": "ut3-e9-1",
+      "title": "UT3_E9_Reescribir un ejercicio con funciones",
+      "text": "De todos los programas que has realizado en el curso hasta este momento, seguro que se te ocurre alguno que se beneficiaría de la capacidad de reutilización de las funciones. Reescribe un ejercicio anterior usando funciones."
+    },
+    {
+      "id": "ut3-e9-2",
+      "title": "UT3_E9_Mayor de cinco números con función de lectura",
+      "text": "Crea un programa en el que introduzcas cinco números por el teclado y diga cuál de ellos es el mayor. Toda la gestión de la obtención de los números por el teclado debe hacerse en una función con esta declaración:\npublic static int lecturaNumeroTeclado()."
+    },
+    {
+      "id": "ut3-e9-3",
+      "title": "UT3_E9_Lanzar N dados de M caras",
+      "text": "Crea una función que lance N dados de M caras y muestre el resultado impreso por pantalla (N y M son parámetros de la función)."
+    },
+    {
+      "id": "ut3-e9-4",
+      "title": "UT3_E9_Decimal a binario",
+      "text": "Escribe un programa que transforme números decimales a binario empleando funciones."
+    },
+    {
+      "id": "ut3-e9-5",
+      "title": "UT3_E9_Contador inverso recursivo",
+      "text": "Crea un programa que use la siguiente función. Depúrala paso a paso para entender su funcionamiento.\npublic static void contadorInverso(int cuenta) {\n    if (cuenta > 1) {\n        System.out.println(cuenta);\n        contadorInverso(--cuenta);\n    } else {\n        System.out.println(cuenta);\n    }\n}"
+    },
+    {
+      "id": "ut3-e11-1",
+      "title": "UT3_E11_Nueva clase en misfunciones",
+      "text": "Crea una nueva clase en el paquete mis funciones y programa alguna función para que se pueda usar desde la clase con el método main de tu programa."
+    },
+    {
+      "id": "ut3-e11-2",
+      "title": "UT3_E11_Paquete FuncionesEstadisticas",
+      "text": "Crea un paquete llamado FuncionesEstadisticas dentro del paquete FuncionesMatematicas, crea una clase con alguna función, impórtala en tu clase con el método main y úsala."
+    },
+    {
+      "id": "ut3-e11-3",
+      "title": "UT3_E11_Quitar static",
+      "text": "Ve a la función restar de la clase FuncionesMatematicas. Borra la palabra static en la declaración de la función y familiarízate con el error que arroja nuestro programa principal. Busca información sobre esta palabra clave “static”. No es imprescindible que entiendas todo lo que encuentres (más adelante en el curso hablaremos de static en clase), es solo una forma de introducirte a la búsqueda de información y resolución de problemas."
+    },
+    {
+      "id": "ut3-e11-4",
+      "title": "UT3_E11_Explorar java.lang y java.util",
+      "text": "Explora algunas clases del paquete java.lang y de java.util en la documentación oficial de la API."
+    },
+    {
+      "id": "ut3-e11-5",
+      "title": "UT3_E11_Primer proyecto con Maven",
+      "text": "Busca información sobre Maven, algún vídeo simple, o algún blog servirá. Cuando le veas/leas crea un nuevo proyecto en NetBeans, pero esta vez que sea Java with Maven -> Java Application. Echa un vistazo a los archivos que se han generado."
+    },
+    {
+      "id": "ut3-e12-1",
+      "title": "UT3_E12_Pedir un número válido",
+      "text": "Realiza un programa que pida un número por el teclado, si el usuario introduce algo que no sea un número, el programa debe decirle al usuario que el dato no es válido y que introduzca un número. Usa gestión de excepciones."
+    },
+    {
+      "id": "ut3-e12-2",
+      "title": "UT3_E12_IndexOutOfBounds y NullPointer",
+      "text": "Investiga qué implican los siguientes tipos de excepciones:\nIndexOutOfBoundsException y NullPointerException."
+    },
+    {
+      "id": "ut3-e13-1",
+      "title": "UT3_E13_Letra s en mitad de palabra",
+      "text": "Valida si un texto contiene la letra s en mitad de alguna palabra, no al principio o al final."
+    },
+    {
+      "id": "ut3-e13-2",
+      "title": "UT3_E13_Validar correo electrónico",
+      "text": "Valida si un texto es una dirección de correo electrónico válida."
+    },
+    {
+      "id": "ut3-e13-3",
+      "title": "UT3_E13_Validar IPv4 en notación CIDR",
+      "text": "Valida una dirección IPv4 en notación CIDR."
+    },
+    {
+      "id": "ut3-e13-4",
+      "title": "UT3_E13_Detectar etiquetas XML",
+      "text": "Valida si un texto contiene alguna etiqueta XML."
+    },
+    {
+      "id": "ut4-e1-1",
+      "title": "UT4_E1_Nota media de seis módulos",
+      "text": "Crea un programa que almacena las notas obtenidas en los 6 módulos del curso. Asigna valores a cada nota (no es necesario que sea con Scanner) y saca la nota media."
+    },
+    {
+      "id": "ut4-e1-2",
+      "title": "UT4_E1_Frase desde un array de palabras",
+      "text": "Crea una array de String y en cada elemento del mismo una palabra. Imprime la frase completa que forman las palabras."
+    },
+    {
+      "id": "ut4-e1-3",
+      "title": "UT4_E1_Nombres y notas de los módulos",
+      "text": "Amplía el ejercicio 1 para tener un segundo array que contenga los nombres de los módulos. Imprime por pantalla el nombre y la nota de cada módulo, como en el siguiente ejemplo:\nProgramación: 7\nLenguajes de marcas: 6\netc."
+    },
+    {
+      "id": "ut4-e1-4",
+      "title": "UT4_E1_Notas de todo el ciclo",
+      "text": "Amplía el ejercicio 1 para tener un segundo array con las notas de otros 7 módulos del segundo curso, introduce datos para este segundo curso. Crea un nuevo array con los datos de ambos arrays, luego realiza un bucle que saque por pantalla las notas de todos los módulos del ciclo."
+    },
+    {
+      "id": "ut4-e1-5",
+      "title": "UT4_E1_Suma de N números",
+      "text": "Crea un programa que le permita al usuario decir cuantos números quiere introducir, tras esto debe solicitar estos números y almacenarlos en un array. Finalmente sacará por pantalla la suma de todos los números."
+    },
+    {
+      "id": "ut4-e1-6",
+      "title": "UT4_E1_Explorar un array en la Javadoc",
+      "text": "Crea el siguiente array:\nint[] miArray = new int[];\nExplora los métodos y parámetros que te propone la javadoc al escribir:\nmiArray."
+    },
+    {
+      "id": "ut4-e2-1",
+      "title": "UT4_E2_Suma de una matriz 3x3",
+      "text": "Crea una matriz bidimensional de 3x3 e inicialízala con valores enteros. Luego, calcula la suma de todos los elementos de la matriz."
+    },
+    {
+      "id": "ut4-e2-2",
+      "title": "UT4_E2_Máximo en un array tridimensional",
+      "text": "Escribe un programa que encuentre el elemento más grande en un array tridimensional que debe ser rellenado con números aleatorios y muestre su valor junto con las coordenadas (fila y columna) donde se encuentra."
+    },
+    {
+      "id": "ut4-e2-3",
+      "title": "UT4_E2_Matriz volteada",
+      "text": "Escribe un programa que copie los elementos de una matriz bidimensional 3x3 a otra matriz de igual tamaño, pero volteada, y luego muestre las dos. Ejemplo:\nNormal\n1 2 3\n4 5 6\n7 8 9\nVolteada\n9 8 7\n6 5 4\n3 2 1"
+    },
+    {
+      "id": "ut4-e2-4",
+      "title": "UT4_E2_Tablero de ajedrez con matriz",
+      "text": "Crea una matriz bidimensional que represente un tablero de ajedrez, donde 'B' son las casillas blancas y 'N' representan las casillas negras. Imprime el tablero en la consola. Recuerda que el tablero de ajedrez es 8x8 y que las casillas adyacentes siempre son del color contrario."
+    },
+    {
+      "id": "ut4-e2-5",
+      "title": "UT4_E2_length en arrays multidimensionales",
+      "text": "En un array bidimensional como este a[3][3] puedes usar a.length y a[0].length. ¿Por qué? Reflexiona sobre ellos, intenta usar a[0][0].length y prueba con arrays de más dimensiones."
+    },
+    {
+      "id": "ut4-e3-1",
+      "title": "UT4_E3_Frecuencia de números aleatorios",
+      "text": "Crea un array de enteros de 100 elementos. Rellena este array con números aleatorios del 1 al 10. Crea un segundo array con la cantidad de veces que el array de elementos aleatorios tiene cada uno de los números. Imprime el resultado de este segundo array por pantalla."
+    },
+    {
+      "id": "ut4-e3-2",
+      "title": "UT4_E3_Enunciados en arrays de char",
+      "text": "Crea un array de Strings en el que cada elemento del array sea un String con cada uno de los enunciados de los ejercicios propuestos. Crea un segundo array bidimensional de tipo char en el que cada elemento es un carácter de cada enunciado de ejercicio."
+    },
+    {
+      "id": "ut4-e3-3",
+      "title": "UT4_E3_Array de cuatro dimensiones",
+      "text": "Crea un array de 5x5x5x5, rellénalos de números aleatorios entre 100 y 600. Obtén el número mayor, el menor y la media."
+    },
+    {
+      "id": "ut4-e3-4",
+      "title": "UT4_E3_Imprimir un array directamente",
+      "text": "Al imprimir el array en el ejemplo con la siguiente línea de código salen letras raras. Investiga qué es eso que sale.\nSystem.out.println(\"Fila: \" + fila); // ???"
+    },
+    {
+      "id": "ut4-e3-5",
+      "title": "UT4_E3_Qué es Iterable",
+      "text": "Busca qué es “Iterable” en Java. Es normal que no entiendas del todo qué es o para qué se emplea, pero intenta entender lo máximo que puedas con tus conocimientos actuales."
+    },
+    {
+      "id": "ut4-e4-1",
+      "title": "UT4_E4_Buscar el 37",
+      "text": "Crea una array con 100 elementos enteros y rellénalo con números del 1 al 100. Usando la clase Arrays encuentra si se ha generado el número 37."
+    },
+    {
+      "id": "ut4-e4-2",
+      "title": "UT4_E4_Sopa de letras",
+      "text": "A partir de estos dos arrays:\nString[][] sopa = {\n{\"A\", \"E\", \"Y\", \"I\", \"V\", \"Y\", \"S\", \"A\", \"U\", \"R\", \"C\", \"W\", \"N\", \"M\", \"N\", \"N\", \"I\", \"H\"},\n{\"X\", \"H\", \"C\", \"N\", \"B\", \"X\", \"D\", \"D\", \"W\", \"M\", \"A\", \"H\", \"H\", \"D\", \"U\", \"R\", \"B\", \"J\"},\n{\"J\", \"K\", \"X\", \"I\", \"G\", \"E\", \"Z\", \"B\", \"Y\", \"K\", \"K\", \"O\", \"R\", \"E\", \"V\", \"K\", \"C\", \"V\"},\n{\"S\", \"O\", \"A\", \"V\", \"O\", \"J\", \"L\", \"U\", \"G\", \"L\", \"C\", \"O\", \"Q\", \"F\", \"W\", \"W\", \"T\", \"Y\"},\n{\"Q\", \"F\", \"L\", \"E\", \"L\", \"N\", \"F\", \"L\", \"D\", \"R\", \"Q\", \"R\", \"Y\", \"I\", \"W\", \"R\", \"K\", \"Q\"},\n{\"D\", \"F\", \"D\", \"N\", \"B\", \"H\", \"O\", \"B\", \"S\", \"C\", \"I\", \"T\", \"O\", \"I\", \"G\", \"E\", \"B\", \"O\"},\n{\"W\", \"I\", \"D\", \"U\", \"A\", \"Z\", \"O\", \"A\", \"M\", \"P\", \"I\", \"M\", \"B\", \"B\", \"C\", \"H\", \"Y\", \"B\"},\n{\"M\", \"N\", \"X\", \"S\", \"T\", \"Z\", \"U\", \"S\", \"Q\", \"J\", \"R\", \"U\", \"E\", \"A\", \"A\", \"Q\", \"C\", \"Z\"},\n{\"J\", \"G\", \"N\", \"A\", \"N\", \"O\", \"D\", \"A\", \"O\", \"F\", \"D\", \"O\", \"F\", \"R\", \"U\", \"T\", \"Y\", \"V\"},\n{\"X\", \"H\", \"T\", \"U\", \"G\", \"A\", \"R\", \"U\", \"J\", \"H\", \"P\", \"N\", \"U\", \"G\", \"R\", \"H\", \"E\", \"C\"},\n{\"C\", \"Z\", \"X\", \"R\", \"Q\", \"E\", \"B\", \"R\", \"Z\", \"U\", \"B\", \"A\", \"T\", \"T\", \"R\", \"J\", \"Z\", \"K\"},\n{\"J\", \"S\", \"H\", \"Z\", \"U\", \"Y\", \"U\", \"D\", \"Z\", \"C\", \"D\", \"W\", \"R\", \"P\", \"L\", \"K\", \"Y\", \"B\"}};\nString[] palabras = {\"BELLSPROUT\", \"BULBASAUR\", \"CROBAT\", \"GOLBAT\", \"GRIMER\", \"IVYSAUR\", \"KOFFING\", \"MUK\", \"VENUSAUR\", \"ZUBAT\"};\n\nRealiza un programa que muestre la sopa de letras y la lista de palabras contenidas. El usuario debe poder seleccionar la palabra que quiere encontrar. Tras la selección se redibujará la sopa de letras con las letras de la palabra seleccionada marcada en un color diferente. Ten en cuenta que las palabras solo pueden aparecer de izquierda a derecha, de arriba a abajo y en diagonal de izquierda-arriba a derecha-abajo."
+    },
+    {
+      "id": "ut4-e4-3",
+      "title": "UT4_E4_Copiar frente a referenciar arrays",
+      "text": "Realiza un programa con las siguientes líneas de código:\nint[] a = {1,2,3,4,5};\nint[] b, c;\nb = a;\nc = Arrays.copyOf(a, a.length);\nModifica algún valor del array “a” y depura para ver qué sucede con los demás arrays. Investiga lo sucedido y saca conclusiones."
+    },
+    {
+      "id": "ut4-e5-1",
+      "title": "UT4_E5_Burbuja con alumnos y notas",
+      "text": "Tenemos dos arrays. El primero tiene los nombres de los alumnos, y el segundo tiene sus notas. Puedes usar estas declaraciones en el ejercicio:\nString[] alumnos = {\"Pepito\", \"Juanita\", \"Menganito\", \"Fulatina\"};\nint[] notas = {3, 9, 7, 4};\nModifica el algoritmo de la burbuja para que reciba como parámetro los dos arrays, no devuelva nada, pero imprima por pantalla la lista de alumnos y sus notas, ordenado de mayor nota a menor. Ten en cuenta que las notas y los nombres deben quedar emparejados igual, por ejemplo, Pepito seguirá teniendo un 3 en la lista ordenada."
+    },
+    {
+      "id": "ut4-e5-2",
+      "title": "UT4_E5_Media sin valores atípicos",
+      "text": "Las siguientes muestras corresponden a datos de temperatura. Los datos que se adjuntan contienen valores atípicos. Elimina estos valores y calcula la media de temperatura, se consideran valores atípicos en esta muestra las 10 menores temperaturas y las 10 mayores temperaturas.\nint[] temp= {32,24,29,11,31,28,21,28,22,7,21,23,24,24,30,24,27,7,25,36,17,36,18,22,31,27,26,28,36,36,37,28,32,27,22,27,17,26,8,29,8,23,27,31,32,23,19,37,18,31,36,17,29,17,25,32,9,31,29,27,37,27,18,31,20,16,9,37,29,25,29,29,16,37,16,17,28,36,36,29,30,22,36,22,22,8,36,8,19,30,18,25,5,16,29,19,21,19,36,29,17,19,29,18,32};"
+    },
+    {
+      "id": "ut4-e5-3",
+      "title": "UT4_E5_Inserción y selección",
+      "text": "Implementa las funciones que te permitan ordenar por el método de inserción y selección."
+    },
+    {
+      "id": "ut4-e5-4",
+      "title": "UT4_E5_Shellsort",
+      "text": "Implementa las funciones que te permitan ordenar por el método de shellsort."
+    },
+    {
+      "id": "mayor-de-tres",
+      "title": "El mayor de tres números",
+      "text": "Un programa recibe tres números enteros. Debe mostrar cuál es el mayor. Si los tres números son iguales, debe indicarlo. El programa no debe utilizar funciones de ordenación."
+    },
+    {
+      "id": "precio-con-iva",
+      "title": "Precio con IVA",
+      "text": "Escribe un programa que pida al usuario el precio de un producto sin impuestos y el tipo de IVA que se le aplica (4, 10 o 21 por ciento). El programa debe mostrar el importe del IVA y el precio final con dos decimales. Si el tipo de IVA introducido no es uno de los tres permitidos, debe mostrar un mensaje de error y no realizar el cálculo."
+    },
+    {
+      "id": "anio-bisiesto",
+      "title": "Año bisiesto",
+      "text": "Un programa lee un año y debe indicar si es bisiesto. Un año es bisiesto si es divisible entre 4, salvo que sea divisible entre 100, en cuyo caso solo es bisiesto si además es divisible entre 400. El año debe ser un número positivo; si no lo es, el programa debe volver a pedirlo."
+    },
+    {
+      "id": "adivina-el-numero",
+      "title": "Adivina el número",
+      "text": "El programa elige al azar un número entre 1 y 100 y el usuario tiene que adivinarlo. Tras cada intento, el programa indica si el número secreto es mayor o menor. El usuario dispone como máximo de 7 intentos. Al terminar, se muestra si ha ganado y cuántos intentos ha necesitado, o cuál era el número secreto si ha perdido."
+    },
+    {
+      "id": "contar-vocales",
+      "title": "Contar vocales",
+      "text": "Escribe un programa que lea una frase y muestre cuántas veces aparece cada vocal, sin distinguir entre mayúsculas y minúsculas. Las vocales con tilde deben contarse como la vocal correspondiente. Al final debe indicar cuál es la vocal más frecuente; si hay empate, debe mostrar todas las que empatan."
+    },
+    {
+      "id": "tabla-multiplicar",
+      "title": "Tabla de multiplicar",
+      "text": "Un programa pide un número entero entre 1 y 10 y muestra su tabla de multiplicar del 1 al 10, una operación por línea con el formato «7 x 3 = 21». Si el número está fuera del rango, el programa debe avisar y volver a pedirlo hasta que sea válido."
+    }
+  ]
+}

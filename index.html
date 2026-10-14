@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Programación - DAM - Alonso de Avellaneda</title>
+<style>
+:root{
+  --bg:#f5f5f2; --panel:#fff; --line:#252525; --muted:#707070;
+  --blue:#4f8cff; --yellow:#f2c94c; --green:#57b894; --red:#eb5757;
+  --purple:#9b72cf; --orange:#f2994a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#202020;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.app{height:100vh;display:flex;flex-direction:column;overflow:hidden}
+header{min-height:58px;background:#fff;border-bottom:2px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 18px;flex-wrap:wrap}
+.header-left{display:flex;align-items:center;gap:20px;flex-wrap:wrap;min-width:0}
+.brand{color:#ff6f1e;font-weight:800;letter-spacing:.2px;white-space:nowrap}
+.header-actions{display:flex;gap:8px}
+button{border:1.5px solid var(--line);background:#fff;padding:7px 11px;border-radius:4px}
+button:hover{background:#f0f0ed}
+.workspace{flex:1;display:flex;min-height:0}
+nav{display:flex;gap:7px;flex-wrap:wrap}
+.nav-btn{border-color:#ddd}
+.nav-btn.active{background:#202020;color:#fff;border-color:#202020}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.view{display:none;height:100%;min-height:0}
+.view.active{display:flex}
+#board{flex-direction:column}
+.analyse{flex:1;display:grid;grid-template-columns:minmax(420px,1fr) 380px;min-height:0}
+.editor-panel,.todo-panel{min-width:0;display:flex;flex-direction:column}
+.editor-panel{border-right:2px solid var(--line)}
+.panel-head{padding:12px 15px;border-bottom:1.5px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.panel-title{font-weight:800}
+.panel-head.wrap{flex-wrap:wrap}
+.problem-pick{display:flex;align-items:center;gap:10px}
+#problemSelect{font:inherit;border:1.5px solid var(--line);border-radius:4px;padding:5px 8px;background:#fff;max-width:280px}
+.editor-wrap{flex:1;position:relative;padding:20px;overflow:auto;background:#fff}
+textarea#problem{width:100%;min-height:100%;resize:none;border:0;outline:0;font-size:18px;line-height:1.7;background:transparent;color:transparent;caret-color:#222;position:relative;z-index:2}
+.highlight-layer{position:absolute;inset:20px;white-space:pre-wrap;word-wrap:break-word;font-size:18px;line-height:1.7;color:#202020;pointer-events:none}
+.mark{border-radius:2px;padding:1px 0}
+.palette{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.swatch{width:25px;height:25px;padding:0;border:2px solid #222;border-radius:50%}
+.swatch.selected{outline:2px solid #fff;box-shadow:0 0 0 3px #222}
+.color-row{display:flex;align-items:center;gap:8px}
+.color-label{border:1px solid #ccc;padding:4px 7px;width:105px;background:#fff}
+.todo-panel{background:#fafaf8}
+.todo-list{padding:12px;overflow:auto;flex:1;display:flex;flex-direction:column;gap:8px}
+.todo{display:grid;grid-template-columns:22px 24px 1fr;gap:7px;align-items:start;border:1.5px solid var(--line);background:#fff;padding:9px;border-left:7px solid var(--todo-color)}
+.todo.dragging{opacity:.45}
+.todo .handle{cursor:grab;color:#777}
+.todo.done .todo-text{text-decoration:line-through;color:#777}
+.todo .todo-text{line-height:1.35}
+.todo-label{font-weight:800}
+.empty{color:#777;padding:20px 8px;text-align:center}
+.hint{font-size:12px;color:#777}
+.grid-tools{padding:10px 15px;border-bottom:1.5px solid var(--line);display:flex;gap:7px;align-items:center}
+.board{position:relative;flex:1;background:#fff;overflow:hidden}
+canvas{display:block;width:100%;height:100%}
+.tool-btn.active{background:#202020;color:#fff}
+[hidden]{display:none!important}
+#toolbox{flex-direction:column}
+.tb-bar{padding:12px 15px;border-bottom:1.5px solid var(--line);background:#fff;display:flex;flex-direction:column;gap:9px}
+.tb-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tb-search{flex:1 1 220px;max-width:440px;border:1.5px solid var(--line);border-radius:4px;padding:7px 10px;background:#fff}
+.tb-row{display:flex;gap:10px;align-items:flex-start}
+.tb-row-title{flex:none;width:76px;padding-top:4px;font-size:11px;font-weight:800;text-transform:uppercase;color:#555}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{--c:#888;display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border:1.5px solid var(--c);border-radius:999px;background:color-mix(in srgb,var(--c) 14%,#fff);font-size:12.5px;line-height:1.5;white-space:nowrap}
+.chip.ut{--c:#202020;background:#fff;font-weight:700}
+.chip.v1{border-style:dashed;font-weight:800}
+.chip.v2{border-style:dotted;font-style:italic}
+.chip.v3{border-width:3px;font-weight:800;font-style:italic}
+.chip.v4{border-style:double;border-width:4px;text-decoration:underline}
+.chip-check{cursor:pointer;user-select:none}
+.chip-check input{margin:0;accent-color:var(--c)}
+.chip-check:has(input:checked){background:color-mix(in srgb,var(--c) 42%,#fff);box-shadow:0 0 0 1.5px var(--c)}
+.chip-check.disabled{opacity:.35;cursor:default}
+.chip .n{font-size:11px;color:#555;font-weight:400;font-style:normal;text-decoration:none}
+.tb-scroll{position:relative;flex:1;min-height:0;overflow:auto;padding:15px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;align-items:start}
+.card{border:1.5px solid var(--line);border-radius:4px;background:#fff;padding:0 14px 14px}
+.card:not(.open){cursor:pointer}
+.card:not(.open):hover{background:#fafaf8}
+.card.open{grid-column:1/-1;overflow:auto;box-shadow:0 4px 18px rgba(0,0,0,.12);padding-bottom:20px}
+.card-h{margin:0 -14px;font-size:16px}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;padding:13px 14px 6px;border:0;border-radius:0;background:transparent;text-align:left;font-weight:800}
+.card-head:hover{background:transparent}
+.card.open .card-h{position:sticky;top:0;z-index:1;background:#fff;border-bottom:1px solid #e4e4e0}
+.card.open .card-head{padding-bottom:12px}
+.chev{color:#555;transition:transform .15s}
+.card.open .chev{transform:rotate(180deg)}
+.card .summary{margin:0 0 10px;color:#555;font-size:14px;line-height:1.4}
+.card.open .summary{margin-top:12px;font-size:15px;color:#333}
+.card-body h4{margin:18px 0 6px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:#555}
+.desc{max-width:80ch;font-size:15px;line-height:1.6}
+.desc p,.desc ul,.desc ol{margin:0 0 10px}
+.desc ul,.desc ol{padding-left:22px}
+.desc code{background:#f0f0ed;border:1px solid #e2e2dd;border-radius:3px;padding:0 4px;font:.9em ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+.code-box{position:relative;border:1.5px solid var(--line);border-radius:4px;background:#1f2128;color:#e4e4e4}
+.code-box pre{margin:0;padding:14px 16px;overflow:auto;font:13.5px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;tab-size:4}
+.copy-btn{position:absolute;top:8px;right:8px;padding:4px 10px;font-size:12px}
+.tk-kw{color:#c792ea}.tk-lit{color:#ff9e64}.tk-str{color:#c3e88d}.tk-com{color:#8a93a3;font-style:italic}
+.tk-num{color:#f78c6c}.tk-type{color:#ffcb6b}.tk-fn{color:#82aaff}.tk-ann{color:#89ddff}
+.docs{margin:0;padding-left:20px;line-height:1.8}
+.docs a{color:#2457c5}
+@media(max-width:900px){
+ .analyse{grid-template-columns:1fr}.todo-panel{display:none}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="header-left">
+    <div class="brand">Programación - DAM - Alonso de Avellaneda</div>
+    <nav>
+      <button class="nav-btn active" data-view="analyse">🔎 Analizar</button>
+      <button class="nav-btn" data-view="board">✎ Pizarra</button>
+      <button class="nav-btn" data-view="toolbox">🧰 Herramientas</button>
+    </nav>
+  </div>
+  <div class="header-actions">
+    <button onclick="saveState()">Guardar</button>
+    <button onclick="resetAll()">Nuevo problema</button>
+  </div>
+</header>
+<div class="workspace">
+<main class="main">
+
+<section id="analyse" class="view active">
+  <div class="analyse">
+    <div class="editor-panel">
+      <div class="panel-head wrap">
+        <div class="problem-pick">
+          <span class="panel-title">Enunciado</span>
+          <select id="problemSelect" aria-label="Cargar enunciado" disabled><option value="">Cargando enunciados…</option></select>
+        </div>
+        <div class="palette" id="palette"></div>
+      </div>
+      <div class="editor-wrap">
+        <div id="highlightLayer" class="highlight-layer"></div>
+        <textarea id="problem" spellcheck="false" placeholder="Pega aquí el enunciado del problema...">Un programa recibe tres números enteros. Debe mostrar cuál es el mayor. Si los tres números son iguales, debe indicarlo. El programa no debe utilizar funciones de ordenación.</textarea>
+      </div>
+      <div class="panel-head">
+        <span class="hint">Selecciona texto y pulsa un color para convertirlo en una tarea.</span>
+        <button onclick="clearHighlights()">Quitar subrayados</button>
+      </div>
+    </div>
+    <aside class="todo-panel">
+      <div class="panel-head">
+        <div><div class="panel-title">Tareas extraídas</div><div class="hint" id="todoCount">0 tareas</div></div>
+      </div>
+      <div id="todoList" class="todo-list"></div>
+    </aside>
+  </div>
+</section>
+
+<section id="board" class="view">
+  <div class="grid-tools">
+    <button class="tool-btn active" data-draw="pen">✎ Lápiz</button>
+    <button class="tool-btn" data-draw="line">／ Línea</button>
+    <button class="tool-btn" data-draw="text">T Texto</button>
+    <button class="tool-btn" data-draw="eraser">⌫ Borrar</button>
+    <input id="drawColor" type="color" value="#202020" title="Color">
+    <button onclick="clearCanvas()">Limpiar pizarra</button>
+  </div>
+  <div class="board"><canvas id="canvas"></canvas></div>
+</section>
+
+<section id="toolbox" class="view">
+  <div class="tb-bar">
+    <div class="tb-top">
+      <span class="panel-title">Caja de herramientas</span>
+      <input id="tbSearch" class="tb-search" type="search" placeholder="Buscar herramienta…" autocomplete="off" aria-label="Buscar herramienta">
+      <span id="tbCount" class="hint"></span>
+      <button type="button" id="tbClear">Limpiar filtros</button>
+    </div>
+    <div class="tb-row"><span class="tb-row-title">UT</span><div id="utFilters" class="chips"></div></div>
+    <div class="tb-row"><span class="tb-row-title">Etiquetas</span><div id="tagFilters" class="chips"></div></div>
+  </div>
+  <div id="tbScroll" class="tb-scroll">
+    <div id="tbStatus" class="empty" hidden></div>
+    <div id="cards" class="cards"></div>
+  </div>
+</section>
+
+</main></div></div>
+
+<script>
+const COLORS=[
+ {id:'blue',hex:'#4f8cff',label:'Datos'},
+ {id:'green',hex:'#57b894',label:'Objetivo'},
+ {id:'yellow',hex:'#f2c94c',label:'Condición'},
+ {id:'red',hex:'#eb5757',label:'Restricción'},
+ {id:'purple',hex:'#9b72cf',label:'Operación'},
+ {id:'orange',hex:'#f2994a',label:'Duda'}
+];
+let selectedColor=COLORS[0], todos=[], dragId=null;
+
+function initPalette(){
+ const p=document.getElementById('palette'); p.innerHTML='';
+ COLORS.forEach(c=>{
+   const wrap=document.createElement('div'); wrap.className='color-row';
+   const b=document.createElement('button'); b.className='swatch'; b.style.background=c.hex; b.title=c.label;
+   b.onclick=()=>{selectedColor=c; document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')};
+   const inp=document.createElement('input'); inp.className='color-label'; inp.value=c.label;
+   inp.onchange=()=>{c.label=inp.value; renderTodos(); renderHighlights(); saveState(false)};
+   wrap.append(b,inp);p.append(wrap);
+ });
+ p.querySelector('.swatch').classList.add('selected');
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function renderHighlights(){
+ const text=document.getElementById('problem').value;
+ const marks=todos.filter(t=>t.sourceStart!=null).sort((a,b)=>a.sourceStart-b.sourceStart);
+ let out='',pos=0;
+ for(const t of marks){
+   if(t.sourceStart<pos) continue;
+   out+=escapeHtml(text.slice(pos,t.sourceStart));
+   out+=`<span class="mark" style="background:${t.color}55;border-bottom:4px solid ${t.color}">${escapeHtml(text.slice(t.sourceStart,t.sourceEnd))}</span>`;
+   pos=t.sourceEnd;
+ }
+ out+=escapeHtml(text.slice(pos));
+ document.getElementById('highlightLayer').innerHTML=out;
+}
+function addHighlight(){
+ const ta=document.getElementById('problem'), start=ta.selectionStart,end=ta.selectionEnd;
+ if(start===end)return;
+ const text=ta.value.slice(start,end);
+ const t={id:crypto.randomUUID(),color:selectedColor.hex,colorId:selectedColor.id,label:selectedColor.label,text,sourceStart:start,sourceEnd:end,completed:false,order:todos.length};
+ todos.push(t); renderTodos(); renderHighlights(); saveState(false);
+}
+function renderTodos(){
+ const list=document.getElementById('todoList'); list.innerHTML='';
+ todos.sort((a,b)=>a.order-b.order);
+ document.getElementById('todoCount').textContent=`${todos.length} ${todos.length===1?'tarea':'tareas'} · ${todos.filter(t=>t.completed).length} completadas`;
+ if(!todos.length){list.innerHTML='<div class="empty">Subraya partes del enunciado para convertirlas en tareas.</div>';return}
+ todos.forEach(t=>{
+   const el=document.createElement('div');el.className='todo'+(t.completed?' done':'');el.draggable=true;el.dataset.id=t.id;el.style.setProperty('--todo-color',t.color);
+   el.innerHTML=`<input type="checkbox" ${t.completed?'checked':''} aria-label="Realizada"><span class="handle">☰</span><div class="todo-text"><span class="todo-label">${escapeHtml(t.label)}:</span> ${escapeHtml(t.text)}</div>`;
+   el.querySelector('input').onchange=e=>{t.completed=e.target.checked;renderTodos();saveState(false)};
+   el.addEventListener('dragstart',()=>{dragId=t.id;el.classList.add('dragging')});
+   el.addEventListener('dragend',()=>{dragId=null;el.classList.remove('dragging')});
+   el.addEventListener('dragover',e=>{e.preventDefault()});
+   el.addEventListener('drop',e=>{e.preventDefault();if(!dragId||dragId===t.id)return;reorder(dragId,t.id)});
+   list.append(el);
+ });
+}
+function reorder(fromId,toId){
+ const from=todos.findIndex(x=>x.id===fromId),to=todos.findIndex(x=>x.id===toId);
+ const [item]=todos.splice(from,1);todos.splice(to,0,item);todos.forEach((x,i)=>x.order=i);renderTodos();saveState(false);
+}
+function clearHighlights(){todos=[];renderTodos();renderHighlights();saveState(false)}
+document.getElementById('problem').addEventListener('select',()=>{});
+document.getElementById('problem').addEventListener('mouseup',addHighlight);
+document.getElementById('problem').addEventListener('keyup',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')addHighlight()});
+document.getElementById('problem').addEventListener('input',()=>{renderHighlights();saveState(false)});
+
+document.querySelectorAll('.nav-btn').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+ document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));document.getElementById(b.dataset.view).classList.add('active');
+ if(b.dataset.view==='board')resizeCanvas();
+ if(b.dataset.view==='toolbox')fitOpenCard();
+});
+
+let canvas,ctx,drawing=false,startX=0,startY=0,drawMode='pen',lastX=0,lastY=0,snapshot=null;
+const PEN_WIDTH=2,ERASER_WIDTH=24;
+function initCanvas(){
+ canvas=document.getElementById('canvas');ctx=canvas.getContext('2d');resizeCanvas();
+ canvas.addEventListener('pointerdown',e=>{drawing=true;const p=pos(e);startX=lastX=p.x;startY=lastY=p.y;if(drawMode==='line')snapshot=ctx.getImageData(0,0,canvas.width,canvas.height);if(drawMode==='text'){const text=prompt('Texto:');if(text){ctx.fillStyle=document.getElementById('drawColor').value;ctx.font='26px sans-serif';ctx.fillText(text,p.x,p.y)}drawing=false}});
+ canvas.addEventListener('pointermove',e=>{if(!drawing)return;const p=pos(e);ctx.strokeStyle=document.getElementById('drawColor').value;ctx.lineWidth=drawMode==='eraser'?ERASER_WIDTH:PEN_WIDTH;ctx.lineCap='round';if(drawMode==='pen'||drawMode==='eraser'){ctx.globalCompositeOperation=drawMode==='eraser'?'destination-out':'source-over';ctx.beginPath();ctx.moveTo(lastX,lastY);ctx.lineTo(p.x,p.y);ctx.stroke();lastX=p.x;lastY=p.y}else if(drawMode==='line'){ctx.globalCompositeOperation='source-over';ctx.putImageData(snapshot,0,0);ctx.beginPath();ctx.moveTo(startX,startY);ctx.lineTo(p.x,p.y);ctx.stroke()}});
+ canvas.addEventListener('pointerup',e=>{if(!drawing)return;drawing=false;ctx.globalCompositeOperation='source-over';if(drawMode==='line'){const p=pos(e);ctx.putImageData(snapshot,0,0);ctx.strokeStyle=document.getElementById('drawColor').value;ctx.lineWidth=PEN_WIDTH;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(startX,startY);ctx.lineTo(p.x,p.y);ctx.stroke();snapshot=null}});
+}
+function pos(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*canvas.width/r.width,y:(e.clientY-r.top)*canvas.height/r.height}}
+function resizeCanvas(){if(!canvas)return;const r=canvas.parentElement.getBoundingClientRect();const old=document.createElement('canvas');old.width=canvas.width;old.height=canvas.height;if(canvas.width&&canvas.height)old.getContext('2d').drawImage(canvas,0,0);canvas.width=r.width;canvas.height=r.height;ctx=canvas.getContext('2d');if(old.width)ctx.drawImage(old,0,0,old.width,old.height,0,0,canvas.width,canvas.height)}
+function clearCanvas(){ctx.clearRect(0,0,canvas.width,canvas.height)}
+document.querySelectorAll('[data-draw]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-draw]').forEach(x=>x.classList.remove('active'));b.classList.add('active');drawMode=b.dataset.draw;updateCursor()});
+function eraserCursor(){
+ const d=ERASER_WIDTH+4,r=ERASER_WIDTH/2,c=d/2;
+ const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${d}" height="${d}"><circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="#fff" stroke-width="3"/><circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="#202020" stroke-width="1.5"/></svg>`;
+ return `url("data:image/svg+xml,${encodeURIComponent(svg)}") ${c} ${c}, crosshair`;
+}
+function updateCursor(){canvas.style.cursor=drawMode==='eraser'?eraserCursor():''}
+
+const PROBLEMS_URL='problems.json';
+let problems=[];
+async function loadProblems(){
+ const sel=document.getElementById('problemSelect');
+ try{
+   const r=await fetch(PROBLEMS_URL,{cache:'no-cache'});
+   if(!r.ok)throw new Error(`HTTP ${r.status}`);
+   const data=await r.json();
+   problems=(Array.isArray(data)?data:data?.problems||[]).filter(p=>p&&typeof p.title==='string'&&typeof p.text==='string');
+   sel.innerHTML='<option value="">Cargar enunciado…</option>'+problems.map((p,i)=>`<option value="${i}">${escapeHtml(p.title)}</option>`).join('');
+   sel.disabled=!problems.length;
+ }catch(err){
+   sel.innerHTML='<option value="">No se pudieron cargar los enunciados</option>';sel.title=`${PROBLEMS_URL}: ${err.message}`;
+ }
+}
+document.getElementById('problemSelect').addEventListener('change',e=>{
+ const p=problems[e.target.value];e.target.value='';
+ if(!p)return;
+ if(todos.length&&!confirm(`El enunciado actual tiene resaltados. ¿Sustituirlo por «${p.title}»? Se borrarán los resaltados y las tareas extraídas.`))return;
+ document.getElementById('problem').value=p.text;
+ todos=[];renderTodos();renderHighlights();saveState(false);
+});
+
+const TOOLS_URL='tools.json';
+const TAG_COLORS=['#4f8cff','#2e9e6e','#d4a017','#eb5757','#9b72cf','#f2994a','#1fa2b4','#e05f9d','#8d6e63','#5c6bc0'];
+const TAG_VARIANTS=['','v1','v2','v3','v4'];
+const JAVA_KEYWORDS=new Set('abstract assert boolean break byte case catch char class const continue default do double else enum extends final finally float for goto if implements import instanceof int interface long module native new package permits private protected public record return sealed short static strictfp super switch synchronized this throw throws transient try var void volatile while yield'.split(' '));
+const JAVA_LITERALS=new Set(['true','false','null']);
+let toolEntries=[],tagStyles=new Map(),openCard=null;
+const tbFilters={ut:new Set(),tags:new Set()};
+
+function normalizeText(s){return String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase()}
+function inlineMd(s){
+ return s.split(/(`[^`]+`)/).map((part,i)=>i%2?`<code>${escapeHtml(part.slice(1,-1))}</code>`:
+   escapeHtml(part).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*\s][^*]*)\*/g,'<em>$1</em>')).join('');
+}
+// Texto con párrafos (línea en blanco), listas "- " / "1. ", `código`, **negrita** y *cursiva*
+function renderRichText(src){
+ let html='',list=null,para=[];
+ const flushPara=()=>{if(para.length){html+=`<p>${para.map(inlineMd).join('<br>')}</p>`;para=[]}};
+ const closeList=()=>{if(list){html+=`</${list}>`;list=null}};
+ for(const line of src.split('\n')){
+   const ul=line.match(/^\s*-\s+(.*)/),ol=line.match(/^\s*\d+\.\s+(.*)/),item=ul||ol;
+   if(item){flushPara();const tag=ul?'ul':'ol';if(list!==tag){closeList();html+=`<${tag}>`;list=tag}html+=`<li>${inlineMd(item[1])}</li>`}
+   else if(!line.trim()){flushPara();closeList()}
+   else{closeList();para.push(line)}
+ }
+ flushPara();closeList();return html;
+}
+function highlightJava(src){
+ const re=/(\/\/[^\n]*|\/\*[\s\S]*?\*\/)|("""[\s\S]*?"""|"(?:\\.|[^"\\\n])*"|'(?:\\.|[^'\\\n])*')|(@[A-Za-z_]\w*)|\b(\d[\d_]*(?:\.\d+)?(?:[eE][+-]?\d+)?[lLfFdD]?)\b|([A-Za-z_$][\w$]*)/g;
+ let out='',last=0,m;
+ while((m=re.exec(src))){
+   out+=escapeHtml(src.slice(last,m.index));last=re.lastIndex;
+   const [tok,com,str,ann,num,id]=m;let cls='';
+   if(com)cls='com';else if(str)cls='str';else if(ann)cls='ann';else if(num)cls='num';
+   else if(JAVA_KEYWORDS.has(id))cls='kw';else if(JAVA_LITERALS.has(id))cls='lit';
+   else if(/^[A-Z]/.test(id))cls='type';else if(/^\s*\(/.test(src.slice(last,last+20)))cls='fn';
+   out+=cls?`<span class="tk-${cls}">${escapeHtml(tok)}</span>`:escapeHtml(tok);
+ }
+ return out+escapeHtml(src.slice(last));
+}
+async function copyText(text){
+ try{await navigator.clipboard.writeText(text);return true}
+ catch{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();return ok}
+}
+
+function normalizeTool(raw,i){
+ if(!raw||typeof raw.title!=='string')return null;
+ const ut=[].concat(raw.ut??[]).map(Number).filter(n=>Number.isInteger(n)&&n>=1&&n<=12);
+ const tags=[].concat(raw.tags??[]).map(String);
+ const docs=[].concat(raw.javadoc??[]).map(d=>typeof d==='string'?{label:d,url:d}:d).filter(d=>d&&/^https?:\/\//.test(d.url));
+ return {id:raw.id||`tool-${i}`,title:raw.title,summary:raw.summary||'',description:raw.description||'',code:raw.code||'',ut,tags,docs};
+}
+function setTools(data){
+ const list=Array.isArray(data)?data:data?.tools;
+ if(!Array.isArray(list))throw new Error('el JSON debe contener un array "tools"');
+ const tools=list.map(normalizeTool).filter(Boolean);
+ // Mismo nombre -> mismo estilo. Con más etiquetas que colores, se repite el color con otra variante visual.
+ const allTags=[...new Set(tools.flatMap(t=>t.tags))].sort((a,b)=>a.localeCompare(b,'es'));
+ tagStyles=new Map(allTags.map((name,i)=>[name,{color:TAG_COLORS[i%TAG_COLORS.length],variant:TAG_VARIANTS[Math.floor(i/TAG_COLORS.length)%TAG_VARIANTS.length]}]));
+ tbFilters.ut.clear();tbFilters.tags.clear();openCard=null;
+ document.getElementById('tbSearch').value='';
+ const cards=document.getElementById('cards');cards.innerHTML='';
+ toolEntries=tools.map(tool=>{
+   const entry={tool,rendered:false,hay:normalizeText([tool.title,tool.summary,tool.description,...tool.tags,...tool.ut.map(n=>'UT'+n)].join(' '))};
+   entry.el=createToolCard(entry);cards.append(entry.el);return entry;
+ });
+ renderToolFilters(tools,allTags);applyToolFilters();
+}
+function tagChip(name){const s=tagStyles.get(name);return `<span class="chip ${s.variant}" style="--c:${s.color}">${escapeHtml(name)}</span>`}
+function createToolCard(entry){
+ const t=entry.tool,el=document.createElement('article');el.className='card';
+ el.innerHTML=`<h3 class="card-h"><button type="button" class="card-head" aria-expanded="false"><span>${escapeHtml(t.title)}</span><span class="chev" aria-hidden="true">▾</span></button></h3><p class="summary">${escapeHtml(t.summary)}</p><div class="chips">${t.ut.map(n=>`<span class="chip ut">UT${n}</span>`).join('')}${t.tags.map(tagChip).join('')}</div><div class="card-body" hidden></div>`;
+ el.querySelector('.card-head').addEventListener('click',e=>{e.stopPropagation();toggleCard(entry)});
+ el.addEventListener('click',()=>{if(openCard!==entry)toggleCard(entry)});
+ return el;
+}
+function renderCardBody(entry){
+ const t=entry.tool,body=entry.el.querySelector('.card-body');let html='';
+ if(t.description)html+=`<h4>Descripción</h4><div class="desc">${renderRichText(t.description)}</div>`;
+ if(t.code)html+=`<h4>Ejemplo</h4><div class="code-box"><button type="button" class="copy-btn">Copiar</button><pre><code>${highlightJava(t.code)}</code></pre></div>`;
+ if(t.docs.length)html+=`<h4>Documentación Java 25</h4><ul class="docs">${t.docs.map(d=>`<li><a href="${escapeHtml(d.url)}" target="_blank" rel="noopener">${escapeHtml(d.label||d.url)} ↗</a></li>`).join('')}</ul>`;
+ body.innerHTML=html;
+ const copy=body.querySelector('.copy-btn');
+ if(copy)copy.onclick=async()=>{const ok=await copyText(t.code);copy.textContent=ok?'¡Copiado!':'No se pudo copiar';setTimeout(()=>copy.textContent='Copiar',1500)};
+ entry.rendered=true;
+}
+function toggleCard(entry){
+ if(openCard===entry){closeCard(entry);return}
+ if(openCard)closeCard(openCard);
+ if(!entry.rendered)renderCardBody(entry);
+ const el=entry.el;
+ el.classList.add('open');el.querySelector('.card-body').hidden=false;el.querySelector('.card-head').setAttribute('aria-expanded','true');
+ openCard=entry;fitOpenCard();
+ document.getElementById('tbScroll').scrollTo({top:el.offsetTop-15,behavior:'smooth'});
+}
+function closeCard(entry){
+ const el=entry.el;
+ el.classList.remove('open');el.style.maxHeight='';el.scrollTop=0;
+ el.querySelector('.card-body').hidden=true;el.querySelector('.card-head').setAttribute('aria-expanded','false');
+ if(openCard===entry)openCard=null;
+}
+// La tarjeta abierta ocupa como máximo el alto visible y hace scroll por dentro
+function fitOpenCard(){const h=document.getElementById('tbScroll').clientHeight;if(openCard&&h)openCard.el.style.maxHeight=(h-30)+'px'}
+function renderToolFilters(tools,allTags){
+ const utCount=new Map(),tagCount=new Map();
+ tools.forEach(t=>{t.ut.forEach(n=>utCount.set(n,(utCount.get(n)||0)+1));t.tags.forEach(g=>tagCount.set(g,(tagCount.get(g)||0)+1))});
+ const ut=document.getElementById('utFilters');ut.innerHTML='';
+ for(let n=1;n<=12;n++)ut.append(filterCheck(`UT${n}`,utCount.get(n)||0,tbFilters.ut,n,'ut'));
+ const tg=document.getElementById('tagFilters');tg.innerHTML='';
+ allTags.forEach(name=>{const s=tagStyles.get(name);tg.append(filterCheck(name,tagCount.get(name),tbFilters.tags,name,s.variant,s.color))});
+}
+function filterCheck(label,count,set,value,cls,color){
+ const l=document.createElement('label');l.className=`chip chip-check ${cls}`;if(color)l.style.setProperty('--c',color);
+ const inp=document.createElement('input');inp.type='checkbox';inp.disabled=!count;
+ inp.onchange=()=>{inp.checked?set.add(value):set.delete(value);applyToolFilters()};
+ const n=document.createElement('span');n.className='n';n.textContent=count;
+ l.append(inp,label,n);if(!count)l.classList.add('disabled');
+ return l;
+}
+// Dentro de cada grupo basta con una casilla marcada (O); entre grupos y términos de búsqueda deben cumplirse todos (Y)
+function applyToolFilters(){
+ const terms=normalizeText(document.getElementById('tbSearch').value).split(/\s+/).filter(Boolean);
+ let shown=0;
+ for(const e of toolEntries){
+   const t=e.tool;
+   const ok=(!tbFilters.ut.size||t.ut.some(n=>tbFilters.ut.has(n)))&&(!tbFilters.tags.size||t.tags.some(g=>tbFilters.tags.has(g)))&&terms.every(q=>e.hay.includes(q));
+   e.el.hidden=!ok;if(ok)shown++;else if(openCard===e)closeCard(e);
+ }
+ document.getElementById('tbCount').textContent=`${shown} de ${toolEntries.length}`;
+ showToolStatus(toolEntries.length&&!shown?'Ninguna herramienta coincide con la búsqueda y los filtros.':'');
+}
+function showToolStatus(msg){const s=document.getElementById('tbStatus');s.textContent=msg;s.hidden=!msg}
+function clearToolFilters(){
+ tbFilters.ut.clear();tbFilters.tags.clear();document.getElementById('tbSearch').value='';
+ document.querySelectorAll('#toolbox .chip-check input').forEach(i=>i.checked=false);applyToolFilters();
+}
+async function loadTools(){
+ try{
+   const r=await fetch(TOOLS_URL,{cache:'no-cache'});
+   if(!r.ok)throw new Error(`HTTP ${r.status}`);
+   setTools(await r.json());
+ }catch(err){
+   document.getElementById('tbCount').textContent='';
+   showToolStatus(`No se pudo cargar «${TOOLS_URL}» (${err.message}). Si abres la página como archivo local, el navegador bloquea la lectura del JSON: sírvela con un servidor (por ejemplo, «python3 -m http.server» en la carpeta del proyecto).`);
+ }
+}
+document.getElementById('tbSearch').addEventListener('input',applyToolFilters);
+document.getElementById('tbClear').addEventListener('click',clearToolFilters);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&openCard&&document.getElementById('toolbox').classList.contains('active'))closeCard(openCard)});
+window.addEventListener('resize',fitOpenCard);
+function saveState(show=true){
+ const state={text:document.getElementById('problem').value,colors:COLORS,todos};
+ localStorage.setItem('computational-thinking-state',JSON.stringify(state));
+ if(show) alert('Trabajo guardado en este navegador.');
+}
+function loadState(){
+ const s=JSON.parse(localStorage.getItem('computational-thinking-state')||'null');
+ if(s){document.getElementById('problem').value=s.text||'';todos=s.todos||[];if(s.colors)s.colors.forEach((x,i)=>{if(COLORS[i])COLORS[i].label=x.label})}
+ initPalette();renderTodos();renderHighlights();
+}
+function resetAll(){if(!confirm('¿Crear un problema nuevo y borrar el análisis actual?'))return;document.getElementById('problem').value='';todos=[];renderTodos();renderHighlights();localStorage.removeItem('computational-thinking-state')}
+window.addEventListener('resize',resizeCanvas);
+initCanvas();loadState();loadProblems();loadTools();
+</script>
+</body>
+</html>
